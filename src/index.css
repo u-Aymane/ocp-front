@@ -1,13 +1,133 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: "SF Pro Display";
+  src: url(font/SFPRODISPLAYBOLD.OTF) format("opentype");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: "SF Pro Display";
+  src: url(font/SFPRODISPLAYREGULAR.OTF) format("opentype");
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url(font/SFPRODISPLAYMEDIUM.OTF) format("opentype");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "SF Pro Display", sans-serif;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* maxwidth 800px */
+@media (max-width: 1100px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* maxwidth 500px */
+@media (max-width: 730px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.custom-select {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 12px 30px 12px 15px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-select::before {
+  content: "\f078";
+  font-family: "Font Awesome 5 Free";
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  line-height: 1.5;
+  color: #777;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-select.open {
+  border: 2px solid #7b8cff;
+  box-shadow: 0px 0px 8px rgba(123, 140, 255, 0.5);
+  background-color: #fff;
+}
+
+.custom-select.open::before {
+  content: "\f077";
+  color: #7b8cff;
+}
+
+.custom-select option {
+  color: #555;
+  background-color: #f1f1f1;
+}
+
+.custom-select:focus {
+  outline: none;
+}
+
+.custom-select:focus::before {
+  color: #7b8cff;
+}
+
+.custom-select.open option:hover,
+.custom-select.open option:focus {
+  background-color: #7b8cff;
+  color: #fff;
+}
+
+.custom-select.open option:selected {
+  background-color: #7b8cff;
+  color: #fff;
+}
+
+button.button-login.btn.btn-primary.btn-mg {
+  background: #6cb92e;
+  border: 0;
+  width: 57vh;
+  font-size: 13px;
+}
+
+.label-fs {
+  font-size: 12px !important;
+}
+
+.s-w {
+  width: 57vh;
+}
+
+form.form-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 69vh;
+  justify-content: center;
 }

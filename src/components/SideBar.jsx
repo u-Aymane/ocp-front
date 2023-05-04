@@ -71,6 +71,7 @@ export default function SideBar() {
           boxSizing: "border-box",
           border: "1px solid #E5E5E5",
           backgroundColor: "white",
+          maxWidth: "230px",
         },
       }}
       variant={isScreenLg ? "permanent" : "temporary"}
@@ -90,7 +91,7 @@ export default function SideBar() {
           userSelect: "none",
         }}
       >
-        <img style={{ width: 100 }} src="images/logo.svg" alt="logo" />
+        <img style={{ width: 60 }} src="images/logo.svg" alt="logo" />
       </Box>
       <List>
         {links.map((link) => {

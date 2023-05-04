@@ -6,12 +6,12 @@ export default function StatusCard({
   value,
   percent = "",
   sx,
-  lgMaxWidth = "280px",
+  lgMaxWidth = "175px",
 }) {
   return (
     <Box
       sx={{
-        p: "26px 22px",
+        p: "20px 22px",
         display: "flex",
         flexDirection: "column",
         flexShrink: 0,
@@ -22,7 +22,7 @@ export default function StatusCard({
         maxWidth: {
           xs: "auto",
           lg: lgMaxWidth,
-          xl: "360px",
+          xl: "300px",
         },
         width: {
           xs: "100%",
@@ -30,19 +30,36 @@ export default function StatusCard({
         ...sx,
       }}
     >
-      <Box className="flex flex-col gap-5">
+      <Box className="flex flex-col gap-1">
         <Typography
           className="status-title"
-          sx={{ color: "#000000" }}
-          fontWeight="400"
+          sx={{
+            color: "#000000",
+            fontWeight: "400",
+            fontSize: {
+              xs: "16px",
+              sm: "16px",
+              md: "16px",
+              lg: "16px",
+              xl: "24px",
+            },
+          }}
         >
           {title}
         </Typography>
         <Typography
           className="nb-value"
-          sx={{ color: "#000" }}
-          fontWeight="500"
-          fontSize="22px"
+          sx={{
+            color: "#000",
+            fontWeight: "500",
+            fontSize: {
+              xs: "18px",
+              sm: "20px",
+              md: "18px",
+              lg: "18px",
+              xl: "26px",
+            },
+          }}
         >
           {value}
         </Typography>

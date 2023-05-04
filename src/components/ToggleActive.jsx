@@ -64,10 +64,6 @@ export default function MoreOptions({
 
       if (!popoverClicked && !boxClicked) {
         setPop(false);
-
-    
-          updateForm(id, formValue);
-        
       }
     };
     document.addEventListener("mousedown", handleClickOutside);

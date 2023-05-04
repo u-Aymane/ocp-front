@@ -64,6 +64,13 @@ export default function SideBarRight() {
           boxSizing: "border-box",
           border: "1px solid #E5E5E5",
           backgroundColor: "white",
+          maxWidth: {
+            xs: "180px",
+            sm: "180px",
+            md: "180px",
+            lg: "180px",
+            xl: "100%",
+          },
         },
       }}
       variant={isScreenLg ? "permanent" : "temporary"}
@@ -115,17 +122,13 @@ export default function SideBarRight() {
                   className="bg-blue-200   rounded-lg  "
                 />
               </div>
-              <div className="flex flex-col">
-                <ListItemText primary={truncate(link.message, 18)} />
+              <div className="flex flex-col w-full">
+                <span className="text-[13px]">
+                  {truncate(link.message, 18)}{" "}
+                </span>
                 {/* add timing */}
-                <ListItemText
-                  primary="il y a 2 jours"
-                  sx={{
-                    fontSize: "10px",
-                    color: "#9CA3AF",
-                    mt: "-10px",
-                  }}
-                />
+
+                <span className="text-[#A6A6A6] text-[12px]">Il y a 2 minutes</span>
               </div>
             </ListItemButton>
           </ListItem>

@@ -6,7 +6,7 @@ export default function StatusCard({
   value,
   percent = "",
   sx,
-  lgMaxWidth = "175px",
+  lgMaxWidth = "160px",
 }) {
   return (
     <Box
@@ -18,11 +18,15 @@ export default function StatusCard({
         gap: "5px",
         background: "#A6F566",
         boxShadow: "0 2px 10px -2px hsla(0, 31%, 27%, 19%)",
-        borderRadius: "28px",
+        borderRadius: {
+          xs: "20px",
+          lg: "20px",
+          xl: "28px",
+        },
         maxWidth: {
           xs: "auto",
           lg: lgMaxWidth,
-          xl: "300px",
+          xl: "250px",
         },
         width: {
           xs: "100%",
@@ -40,8 +44,8 @@ export default function StatusCard({
               xs: "16px",
               sm: "16px",
               md: "16px",
-              lg: "16px",
-              xl: "24px",
+              lg: "14px",
+              xl: "20px",
             },
           }}
         >
@@ -56,8 +60,8 @@ export default function StatusCard({
               xs: "18px",
               sm: "20px",
               md: "18px",
-              lg: "18px",
-              xl: "26px",
+              lg: "14px",
+              xl: "22px",
             },
           }}
         >

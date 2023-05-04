@@ -27,7 +27,10 @@ export default function Navbar() {
   return (
     <div className="flex flex-col gap-4 my-[1rem]">
       <div className="flex items-center gap-4 mt-[1rem]">
+      <div className="flex gap-2">
+        <img src="images/iconHead.svg" alt="logo" className="w-[1rem] h-[1rem]" />
         <AiOutlineStar />
+      </div>
         <h1 className="text-gray-400 flex items-center gap-4">
           Dashboard <span>/</span> <span className="text-black">default </span>
         </h1>

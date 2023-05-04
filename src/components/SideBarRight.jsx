@@ -123,12 +123,12 @@ export default function SideBarRight() {
                 />
               </div>
               <div className="flex flex-col w-full">
-                <span className="text-[13px]">
+                <span className="text-[13px] xl:text-[18px]">
                   {truncate(link.message, 18)}{" "}
                 </span>
                 {/* add timing */}
 
-                <span className="text-[#A6A6A6] text-[12px]">Il y a 2 minutes</span>
+                <span className="text-[#A6A6A6] text-[12px] xl:text-[15px]">Il y a 2 minutes</span>
               </div>
             </ListItemButton>
           </ListItem>

@@ -20,7 +20,7 @@ const links = [
     id: uuid(),
     path: "/",
     label: "Dashboard",
-    icon: "images/icons/icons8_dashboard.svg",
+    icon: "images/admin.svg",
     isActive(path) {
       return this.path === path;
     },
@@ -29,7 +29,7 @@ const links = [
     id: uuid(),
     path: "/justification",
     label: "Justification",
-    icon: "images/icons/food_bar.svg",
+    icon: "images/stats.svg",
     isActive(path) {
       return this.path === path;
     },
@@ -38,7 +38,7 @@ const links = [
     id: uuid(),
     path: "/Se déconnecter",
     label: "Se déconnecter",
-    icon: "images/icons/icons8_waiter.svg",
+    icon: "images/logout.svg",
     isActive(path) {
       return this.path === path;
     },

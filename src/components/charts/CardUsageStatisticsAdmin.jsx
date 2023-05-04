@@ -1,10 +1,9 @@
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
-import SelectDate from "../SelectDate";
 import AppServices from "../../services/AppServices";
 
-export default function CardUsageStatistics() {
+export default function JustificationStats() {
   const date_now = new Date();
   const date_before = new Date();
   date_before.setDate(date_now.getDate() - 6);
@@ -34,54 +33,13 @@ export default function CardUsageStatistics() {
     },
     series: [
       {
-        name: "Ouverture de profil",
-        data: [
-          30,
-          40,
-          45,
-          50,
-          49,
-          60,
-          70,
-          91,
-        ],
-      },
-      {
         name: "Ajout aux contacts",
-        data: [
-          10,
-          41,
-          35,
-          51,
-          49,
-          62,
-          69,
-          91,
-        ],
-      },
-      {
-        name: "Ajout aux contacts",
-        data: [
-          62,
-          69,
-          91,
-          10,
-          41,
-          35,
-          51,
-          49,
-          
-        ],
+        data: [62, 69, 91, 10, 41, 35, 51, 49],
       },
     ],
   });
 
-
- 
-
-
-    // set data inside setChart
-  
+  // set data inside setChart
 
   return (
     <Box
@@ -91,9 +49,8 @@ export default function CardUsageStatistics() {
           md: "45px 35px",
         },
         mb: "43px",
-        background: "white",
+        background: "#F7F9FB",
         borderRadius: "28px",
-        boxShadow: "0 2px 10px -2px RGBA(89, 47, 47, 0.19)",
         display: "flex",
         flexDirection: "column",
       }}
@@ -105,14 +62,7 @@ export default function CardUsageStatistics() {
           flexWrap: "wrap",
           mb: 4,
         }}
-      >
-        <SelectDate
-          title="Date de début"
-          date={startDate}
-          setDate={setStartDate}
-        />
-        <SelectDate title="Date de fin" date={endDate} setDate={setEndDate} />
-      </Box>
+      ></Box>
       <Chart
         options={chartData.options}
         series={chartData.series}

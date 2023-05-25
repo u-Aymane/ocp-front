@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import StatusCard from "../components/StatusCard";
 import LoadingModal from "../components/modals/LoadingModal";
 import UsersTable from "../components/tables/UsersTable";
+import JustificationStats from "../components/charts/CardUsageStatisticsAdmin";
+import AppServices from "../services/AppServices";
 
 const STATUS_OPTIONS = ["Tout", "A justifier", "Justifier", "Approuver"];
 
@@ -17,6 +19,16 @@ export default function Dashboard() {
   const handleChange = (event, newValue) => {
     setStatus(newValue);
   };
+
+  useEffect(() => {
+    AppServices.post('/api', {
+      action: 10
+    }).then((response) => {
+      setStats(response.data)
+    })
+  }, [])
+  
+
   return (
     <div
       style={{
@@ -32,7 +44,7 @@ export default function Dashboard() {
           mb: "62px",
           display: "flex",
           flexWrap: "wrap",
-
+          width: "100%",
           gap: {
             xs: "1.5rem",
           },
@@ -40,51 +52,36 @@ export default function Dashboard() {
       >
         <StatusCard
           icon="images/icons/icons8_combo_chart.svg"
-          title="Total Justification"
-          value={stats?.total_vent}
+          title="Presence"
+          value={stats?.total_working}
         />
 
         <StatusCard
           icon="images/icons/icons8_purchase_order.svg"
-          title="Total a justifier"
-          value={stats?.total_commands}
+          title="Absence"
+          value={Math.abs(stats?.total_off_work)}
         />
-        <div className="rounded-3xl overflow-hidden w-full mt-[2rem] shadow-lg">
-          <Box
-            sx={{
-              background: "white",
-              boxShadow: "0 2px 10px rgba(89,47,47,.08)",
-              overflow: "hidden",
-              width: "100%",
-            }}
-          >
-            <Box
-              sx={{
-                width: "100%",
-                bgcolor: "primary.light",
-                px: 3,
-              }}
-            >
-              <Tabs value={status} onChange={handleChange}>
-                {STATUS_OPTIONS.map((option) => {
-                  return (
-                    <Tab
-                      sx={{
-                        textTransform: "capitalize",
-                        color: "primary.dark",
-                        fontFamily: "Public Sans",
-                        fontWeight: "400",
-                        fontSize: "17px",
-                      }}
-                      label={option}
-                      key={option}
-                    />
-                  );
-                })}
-              </Tabs>
-            </Box>
-          </Box>
-          <UsersTable currentStats={STATUS_OPTIONS[status]} />
+        <StatusCard
+          icon="images/icons/icons8_combo_chart.svg"
+          title="Overtime"
+          value={stats?.total_over_work}
+        />
+
+        <StatusCard
+          icon="images/icons/icons8_purchase_order.svg"
+          title="Absences injustifiées"
+          value={stats?.total_justifications}
+        />
+        <div className="rounded-3xl overflow-hidden w-[100%]  shadow-lg bg-[#F7F9FB] relative">
+          <div className="absolute left-10 top-6 flex items-center gap-3">
+            <span className="text-[#1C1C1C] font-normal xl:text-lg text-[14px] ml-2 mr-8">
+              Activités des 15 derniers jours
+            </span>
+            <span className="text-[#1C1C1C] font-normal xl:text-lg text-[14px] opacity-40">
+            </span>
+            
+          </div>
+          <JustificationStats />
         </div>
       </Box>
     </div>

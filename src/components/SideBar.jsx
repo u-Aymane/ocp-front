@@ -36,7 +36,7 @@ const links = [
   },
   {
     id: uuid(),
-    path: "/Se déconnecter",
+    path: "/logout",
     label: "Se déconnecter",
     icon: "images/logout.svg",
     isActive(path) {

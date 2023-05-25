@@ -55,13 +55,9 @@ export default function StatusCard({
           className="nb-value"
           sx={{
             color: "#000",
-            fontWeight: "500",
+            fontWeight: "700",
             fontSize: {
-              xs: "18px",
-              sm: "20px",
-              md: "18px",
-              lg: "14px",
-              xl: "22px",
+              xs: "30px"
             },
           }}
         >

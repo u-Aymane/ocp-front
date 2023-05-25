@@ -1,16 +1,19 @@
 @font-face {
   font-family: "SF Pro Display";
   src: url(font/SFPRODISPLAYBOLD.OTF) format("opentype");
+  font-weight: 700;
 }
 
 @font-face {
   font-family: "SF Pro Display";
   src: url(font/SFPRODISPLAYREGULAR.OTF) format("opentype");
+  font-weight: 100;
 }
 
 @font-face {
   font-family: "SF Pro Display";
   src: url(font/SFPRODISPLAYMEDIUM.OTF) format("opentype");
+  font-weight: 400
 }
 
 @tailwind base;
@@ -21,7 +24,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "SF Pro Display", sans-serif;
+  font-family: "SF Pro Display", "";
 }
 
 .grid-container {

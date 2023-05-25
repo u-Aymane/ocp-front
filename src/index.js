@@ -9,6 +9,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import theme from "./theme";
 import { Dashboard, Justification, Login } from "./pages";
+import Logout from "./components/Logout";
 
 export const { useGlobalState } = createGlobalState(initialState);
 
@@ -19,6 +20,7 @@ root.render(
       <CssBaseline />
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
         <Route path="/" element={<App />}>
           <Route path="/" element={<Dashboard />} />
           <Route path="/justification" element={<Justification />} />

@@ -1,10 +1,18 @@
 import { Box } from "@mui/system";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import SideBar from "./components/SideBar";
 import SideBarRight from "./components/SideBarRight";
+import { useEffect } from "react";
 
 function App() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+        navigate("/login");
+    }
+  }, []);
   return (
     <Box
       sx={{

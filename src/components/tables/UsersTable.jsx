@@ -18,6 +18,7 @@ import { useEffect, useState } from "react";
 
 import LoadingModal from "../modals/LoadingModal";
 import MoreOptions from "../ToggleActive";
+import AppServices from "../../services/AppServices";
 
 let TABLE_HEAD = [
   { label: "ID Reclamation", align: "left" },
@@ -26,35 +27,11 @@ let TABLE_HEAD = [
   { label: "Date de justification", align: "center" },
   { label: "Justife", align: "left" },
   { label: "Status", align: "center" },
+  { label: "", align: "center" },
 ];
 
 export default function UsersTable({ currentStats, isSuperAdmin, setData }) {
-  const [users, setUsers] = useState([
-    {
-      id: "1",
-      matricule: "MD150",
-      date_reclamation: "2021-09-20",
-      date_justification: "2021-09-20",
-      justife: "justife",
-      status: "En cours",
-    },
-    {
-      id: "2",
-      matricule: "MD150",
-      date_reclamation: "2021-09-20",
-      date_justification: "2021-09-20",
-      justife: "justife",
-      status: "En cours",
-    },
-    {
-      id: "3",
-      matricule: "MD150",
-      date_reclamation: "2021-09-20",
-      date_justification: "2021-09-20",
-      justife: "justife",
-      status: "En cours",
-    },
-  ]);
+  const [users, setUsers] = useState([]);
 
   const [loading, setLoading] = useState(false);
   const [dense, setDense] = useState(false);
@@ -74,6 +51,16 @@ export default function UsersTable({ currentStats, isSuperAdmin, setData }) {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+
+  useEffect(() => {
+    AppServices.post('/api', {
+      action: 11
+    }).then((response) => {
+      setUsers(response.data)
+    })
+  }, [])
+  
+
   return (
     <Box
       sx={{
@@ -86,7 +73,7 @@ export default function UsersTable({ currentStats, isSuperAdmin, setData }) {
 
       <Box
         sx={{
-          my: 3,
+          my: 0,
           display: "flex",
           justifyContent: "space-between",
           flexWrap: "wrap",
@@ -191,32 +178,8 @@ export default function UsersTable({ currentStats, isSuperAdmin, setData }) {
           </TableBody>
         </Table>
       </TableContainer>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <FormControlLabel
-          control={<Switch checked={dense} onChange={handleChangeDense} />}
-          label="Dense"
-        />
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 15, 25]}
-          component="div"
-          count={count}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </Box>
+      
     </Box>
   );
 }
 
-// function ViewStatus({ status }) {
-//     let colors = {
-//         suspendu: "error",
-//         actif: "success",
-//         onboarding: "warning",
-//     };
-//     return (
-//         <StatusLabel color={colors[status.toLowerCase()]}>{status}</StatusLabel>
-//     );
-// }

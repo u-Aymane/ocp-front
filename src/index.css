@@ -10,6 +10,22 @@
   font-weight: 100;
 }
 
+input[type=file]{
+  display: none;
+}
+
+
+
+.upload{
+  cursor: pointer;
+}
+
+.table-link {
+  /* color: inherit; */
+  color: green!important;
+  text-decoration: underline!important;
+}
+
 @font-face {
   font-family: "SF Pro Display";
   src: url(font/SFPRODISPLAYMEDIUM.OTF) format("opentype");

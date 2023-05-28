@@ -12,6 +12,7 @@ import { v4 as uuid } from "uuid";
 
 import { Link, useLocation } from "react-router-dom";
 import isUser from "../helpers/userRole";
+import { Height } from "@mui/icons-material";
 
 const drawerWidth = 240;
 
@@ -30,6 +31,15 @@ const links = [
     path: "/justification",
     label: "Justification",
     icon: "images/stats.svg",
+    isActive(path) {
+      return this.path === path;
+    },
+  },
+  {
+    id: uuid(),
+    path: "/users",
+    label: "Utilisateurs",
+    icon: "images/users.png",
     isActive(path) {
       return this.path === path;
     },
@@ -56,15 +66,12 @@ export default function SideBar() {
     }));
   }
   const isScreenLg = useMediaQuery("(min-width: 1200px)");
-  // function isActive(path) {
-  //     return path === location.pathname;
-  // }
+
   return (
     <Drawer
       sx={{
         width: drawerWidth,
         flexShrink: 0,
-        zIndex: "997",
 
         "& .MuiDrawer-paper": {
           width: drawerWidth,
@@ -73,6 +80,7 @@ export default function SideBar() {
           backgroundColor: "white",
           maxWidth: "230px",
         },
+        
       }}
       variant={isScreenLg ? "permanent" : "temporary"}
       anchor="left"
@@ -89,11 +97,20 @@ export default function SideBar() {
           display: "flex",
           justifyContent: "center",
           userSelect: "none",
+       
         }}
       >
         <img style={{ width: 60 }} src="images/logo.svg" alt="logo" />
       </Box>
-      <List>
+      <List
+        sx={{
+          display: "flex",
+          gap: "20px",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "10px"
+        }}
+      >
         {links.map((link) => {
           const active = link.isActive
             ? link.isActive(location.pathname)

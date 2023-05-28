@@ -10,6 +10,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import theme from "./theme";
 import { Dashboard, Justification, Login } from "./pages";
 import Logout from "./components/Logout";
+import Users from "./pages/Users";
 
 export const { useGlobalState } = createGlobalState(initialState);
 
@@ -21,7 +22,9 @@ root.render(
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
+          <Route path="/users-edit/:id" element={<Users />} />
         <Route path="/" element={<App />}>
+          <Route path="/users" element={<Users />} />
           <Route path="/" element={<Dashboard />} />
           <Route path="/justification" element={<Justification />} />
           <Route

@@ -24,17 +24,17 @@ import Popup from "../Popup";
 import { useGlobalState } from "../..";
 
 let TABLE_HEAD = [
-  { label: "ID", align: "left" },
-  { label: "Prenom", align: "left" },
-  { label: "Nom", align: "center" },
-  { label: "Matricule", align: "center" },
-  { label: "Paiments par heurs", align: "center" },
-  { label: "CIN", align: "center" },
-  { label: "Cree a", align: "center" },
+  { label: "ID Reclamation", align: "left" },
+  { label: "Matricule", align: "left" },
+  { label: "Date de reclamation", align: "center" },
+  { label: "Date de justification", align: "center" },
+  { label: "Heurs a jusitifee", align: "center" },
+  { label: "Justife", align: "center" },
+  { label: "Status", align: "center" },
   { label: "", align: "center" },
 ];
 
-export default function UsersTable({ currentStats, isSuperAdmin, setData }) {
+export default function JusitifcationsTable({ currentStats, isSuperAdmin, setData }) {
   const [users, setUsers] = useState([]);
   const [show, setShow] = useState(false)
   const [is_admin, setIsAdmin] = useGlobalState('is_admin')
@@ -44,7 +44,7 @@ export default function UsersTable({ currentStats, isSuperAdmin, setData }) {
 
   const getData = () => {
     AppServices.post('/api', {
-      action: 12
+      action: 11
     }).then((response) => {
       setUsers(response.data)
     })
@@ -156,32 +156,52 @@ export default function UsersTable({ currentStats, isSuperAdmin, setData }) {
                       gap: 1,
                     }}
                   >
-                    {row._id}
+                    {uuidv5(JSON.stringify(row._id), NIL_UUID).split("-")[0]}
                   </Box>
                 </TableCell>
                 <TableCell align="left">
-                  {row?.first_name}
+                  {row.user.matricule ? row.user.matricule : "-"}
                 </TableCell>
 
                 <TableCell align="center" sx={{ whiteSpace: "nowrap" }}>
-                  {row?.last_name}
+                  {row._id ? moment({
+                    day: row._id.day,
+                    month: row._id.month - 1,
+                    year: row._id.year
+                  }).format('DD-MM-YYYY') : "-"}
                 </TableCell>
 
                 <TableCell align="center">
-                  {row?.matricule}
+                  {row.justifications?.length > 0 ? moment.utc(row.justifications.created_on).format('DD-MM-YYYY') : "-"}
                 </TableCell>
                 <TableCell align="center">
-                  {row?.salary_per_hour}
-                </TableCell>
-           
-                <TableCell align="center">
-                  {row?.cin}
+                  {row.total_hours_diff}
                 </TableCell>
                 <TableCell align="center">
-                  {moment.utc(row.created_on).format('DD-MM-YYYY')}
+                  <a className="table-link" href={row?.justifications?.length > 0 ? `http://127.0.0.1:8010/documents/${row?.justifications?.[row?.justifications?.length - 1].file}` : "-"}>{row?.justifications?.length > 0 ? "Document" : "-"}</a>
                 </TableCell>
+                <TableCell align="center">
+                  <StatusLabel
+                    color={row?.justifications?.length > 0 ? "success" : "warning"}
+                  >
+                    {row?.justifications?.length > 0 ? row?.justifications?.[row?.justifications?.length - 1]?.confirmed ? "Confirmée" : "Justifiée" : "Non justifiée"}
+                  </StatusLabel>
+                </TableCell>
+
                 <TableCell>
-                <img className="upload" width={15} src="images/edit.png"/> 
+                  <>
+                  
+                  {!is_admin ? <><label htmlFor="upload"><img src={"images/upload.png"} width={25} className="upload"/></label>
+                  <input type="file" id="upload" onChange={(e) => {upload(e.target.files[0], moment({
+                    day: row._id.day,
+                    month: row._id.month - 1,
+                    year: row._id.year
+                  }).format('YYYY-MM-DD'))}} /></>
+                  
+                  :
+                  row?.justifications?.length > 0 ? <img className="upload" width={25} src={row?.justifications?.[row?.justifications?.length - 1]?.confirmed ? "images/disapprove.png" : "images/approve.png" }  onClick={() => changeJustifications(row?.justifications?.[row?.justifications?.length - 1])}/> : null}
+
+                  </>
                 </TableCell>
               </TableRow>
             ))}

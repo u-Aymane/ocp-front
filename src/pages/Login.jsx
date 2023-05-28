@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import App from "../App";
 import AppServices from "../services/AppServices";
+import { useGlobalState } from "..";
 
 const Login = () => {
   const [data, setData] = useState({})
+  const [is_admin, setIsAdmin] = useGlobalState('is_admin')
   const handleSubmit = () => {
   
     AppServices.post('/auth', {
@@ -11,6 +13,8 @@ const Login = () => {
       data: data
     }).then((response) => {
       localStorage.setItem("token", response.token)
+      localStorage.setItem("is_admin", response.is_admin)
+      setIsAdmin(response.is_admin)
       window.location = '/'
     })
   }

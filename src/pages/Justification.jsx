@@ -2,8 +2,8 @@ import { Box, Tab, Tabs } from "@mui/material";
 import { useEffect, useState } from "react";
 import StatusCard from "../components/StatusCard";
 import LoadingModal from "../components/modals/LoadingModal";
-import UsersTable from "../components/tables/UsersTable";
 import AppServices from "../services/AppServices";
+import JusitifcationsTable from "../components/tables/JusitifcationsTable";
 
 const STATUS_OPTIONS = [];
 
@@ -90,7 +90,7 @@ export default function Justification() {
               </Tabs>
             </Box>
           </Box>
-          <UsersTable currentStats={STATUS_OPTIONS[status]} />
+          <JusitifcationsTable currentStats={STATUS_OPTIONS[status]} />
         </div>
       </Box>
     </div>

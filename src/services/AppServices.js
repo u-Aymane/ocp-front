@@ -44,13 +44,10 @@ export const AppServices = {
 
   delete: (path, body) =>
     instance.delete(END_POINTAPI + path, body).then(responseBody),
-  upload: (body, data_type, url, header) =>
+  upload: (url, body, header) =>
     instance
       .post(END_POINTAPI + url, body, {
-        headers: {
-          ...header,
-          "Data-Type": data_type,
-        },
+        headers: header,
       })
       .then(responseBody),
 };

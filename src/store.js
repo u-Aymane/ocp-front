@@ -12,4 +12,5 @@ export const initialState = {
       returnLink: false,
     },
   },
+  is_admin: false
 };

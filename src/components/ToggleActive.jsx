@@ -79,7 +79,6 @@ export default function MoreOptions({
       sx={{
         position: "relative",
         color: "black",
-        zIndex: "999",
       }}
     >
       <IconButton
@@ -102,7 +101,6 @@ export default function MoreOptions({
           background: "white",
           boxShadow: "1px 2px 7px #eee",
           display: pop ? "flex" : "none",
-          zIndex: "999",
           p: 1,
           alignItems: "center",
           borderRadius: "4px",

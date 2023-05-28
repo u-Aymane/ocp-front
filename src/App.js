@@ -2,7 +2,6 @@ import { Box } from "@mui/system";
 import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import SideBar from "./components/SideBar";
-import SideBarRight from "./components/SideBarRight";
 import { useEffect } from "react";
 
 function App() {
@@ -14,6 +13,7 @@ function App() {
     }
   }, []);
   return (
+    <>
     <Box
       sx={{
         minHeight: "100vh",
@@ -21,6 +21,7 @@ function App() {
         display: "flex",
       }}
     >
+      
       <SideBar />
 
       <Box
@@ -41,8 +42,10 @@ function App() {
         <Navbar />
         <Outlet />
       </Box>
-      <SideBarRight />
     </Box>
+    </>
+    
+      
   );
 }
 

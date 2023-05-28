@@ -2,7 +2,6 @@ import { Box, Tab, Tabs } from "@mui/material";
 import { useEffect, useState } from "react";
 import StatusCard from "../components/StatusCard";
 import LoadingModal from "../components/modals/LoadingModal";
-import UsersTable from "../components/tables/UsersTable";
 import JustificationStats from "../components/charts/CardUsageStatisticsAdmin";
 import AppServices from "../services/AppServices";
 
@@ -53,24 +52,24 @@ export default function Dashboard() {
         <StatusCard
           icon="images/icons/icons8_combo_chart.svg"
           title="Presence"
-          value={stats?.total_working}
+          value={stats?.total_working ? stats?.total_working + " h": "0 h"}
         />
 
         <StatusCard
           icon="images/icons/icons8_purchase_order.svg"
           title="Absence"
-          value={Math.abs(stats?.total_off_work)}
+          value={stats?.total_off_work ? Math.abs(stats?.total_off_work) + " h" : "0 h"}
         />
         <StatusCard
           icon="images/icons/icons8_combo_chart.svg"
           title="Overtime"
-          value={stats?.total_over_work}
+          value={stats?.total_over_work ? stats?.total_over_work + " h": "0 h"}
         />
 
         <StatusCard
           icon="images/icons/icons8_purchase_order.svg"
           title="Absences injustifiées"
-          value={stats?.total_justifications}
+          value={stats?.total_to_justify? stats?.total_to_justify : 0}
         />
         <div className="rounded-3xl overflow-hidden w-[100%]  shadow-lg bg-[#F7F9FB] relative">
           <div className="absolute left-10 top-6 flex items-center gap-3">

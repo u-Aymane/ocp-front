@@ -7,45 +7,45 @@ import { useEffect } from "react";
 function App() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!localStorage.getItem("token")) {
-        navigate("/login");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!localStorage.getItem("token")) {
+  //       navigate("/login");
+  //   }
+  // }, []);
   return (
     <>
-    <Box
-      sx={{
-        minHeight: "100vh",
-        bgcolor: "#ffffff",
-        display: "flex",
-      }}
-    >
-      
-      <SideBar />
-
       <Box
         sx={{
-          maxWidth: {
-            lg: "calc(1400px - 240px)",
-            xl: "1200px",
-          },
-          width: "100%",
-          mx: "auto",
-          px: {
-            xs: "1rem",
-            lg: "2rem",
-          },
-          mb: "4rem",
+          minHeight: "100vh",
+          bgcolor: "#ffffff",
+          display: "flex",
         }}
       >
-        <Navbar />
-        <Outlet />
+        <SideBar />
+        <div
+          className="flex flex-col items-center w-full"
+        >
+          <Navbar />
+          <Box
+            sx={{
+              maxWidth: {
+                lg: "calc(1400px - 240px)",
+                xl: "1200px",
+              },
+              width: "100%",
+              mx: "auto",
+              px: {
+                xs: "1rem",
+                lg: "2rem",
+              },
+              mb: "4rem",
+            }}
+          >
+            <Outlet />
+          </Box>
+        </div>
       </Box>
-    </Box>
     </>
-    
-      
   );
 }
 

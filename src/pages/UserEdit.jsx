@@ -8,7 +8,7 @@ import UsersTable from "../components/tables/UsersTable";
 
 const STATUS_OPTIONS = [];
 
-export default function Users() {
+export default function UserEdit() {
   const [loading, setLoading] = useState(false);
   const [stats, setStats] = useState({});
   const [status, setStatus] = useState(0);
@@ -16,79 +16,57 @@ export default function Users() {
     setStatus(newValue);
   };
 
-  useEffect(() => {
-    AppServices.post('/api', {
-      action: 13
-    }).then((response) => {
-      setStats(response)
-    })
-  }, [])
-
-
   return (
     <div
       style={{
         paddingBottom: "62px",
         display: "flex",
         flexDirection: "column",
-        width: "100% !important",
+        width: "100%",
+        maxWidth: "800px",
+        margin: "0 auto",
       }}
     >
       <LoadingModal open={loading} />
-      <Box
-        sx={{
-          mb: "62px",
-          display: "flex",
-          flexWrap: "wrap",
-
-          gap: {
-            xs: "1.5rem",
-          },
-        }}
-      >
-        <StatusCard
-          icon="images/icons/icons8_combo_chart.svg"
-          title="Total Utilisateurs"
-          value={stats.total}
-        />
-
-        <div className="rounded-3xl overflow-hidden w-full mt-[2rem] shadow-lg">
-          <Box
-            sx={{
-              background: "white",
-              overflow: "hidden",
-              width: "100%",
-            }}
-          >
-            <Box
-              sx={{
-                width: "100%",
-                bgcolor: "primary.light",
-                px: 3,
-              }}
-            >
-              <Tabs value={status} onChange={handleChange}>
-                {STATUS_OPTIONS.map((option) => {
-                  return (
-                    <Tab
-                      sx={{
-                        textTransform: "capitalize",
-                        color: "primary.dark",
-                        fontFamily: "Public Sans",
-                        fontWeight: "400",
-                        fontSize: "17px",
-                      }}
-                      label={option}
-                      key={option}
-                    />
-                  );
-                })}
-              </Tabs>
-            </Box>
-          </Box>
-          <UsersTable currentStats={STATUS_OPTIONS[status]} />
+      <form className="grid grid-cols-2 gap-4 mt-[4rem]" autoComplete="off">
+        <div className="">
+          <input
+            type="text"
+            className="w-full h-10 border-2 border-gray-300 rounded-md px-2"
+            placeholder="First Name"
+          />
         </div>
-      </Box>
+        <div className="">
+          <input
+            type="text"
+            className="w-full h-10 border-2 border-gray-300 rounded-md px-2"
+            placeholder="First Name"
+          />
+        </div>
+        <div className="">
+          <input
+            type="text"
+            className="w-full h-10 border-2 border-gray-300 rounded-md px-2"
+            placeholder="First Name"
+          />
+        </div>
+        <div className="">
+          <input
+            type="text"
+            className="w-full h-10 border-2 border-gray-300 rounded-md px-2"
+            placeholder="First Name"
+          />
+        </div>
+        {/* add button  */}
+        <div className="col-span-2">
+          <button
+            type="submit"
+            className="w-full h-10 bg-blue-500 text-white rounded-md"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

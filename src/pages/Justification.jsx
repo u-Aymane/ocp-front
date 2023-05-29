@@ -46,13 +46,13 @@ export default function Justification() {
         }}
       >
         <StatusCard
-          icon="images/icons/icons8_combo_chart.svg"
+          icon="/images/icons/icons8_combo_chart.svg"
           title="Total Justification"
           value={stats?.total_justifications}
         />
 
         <StatusCard
-          icon="images/icons/icons8_purchase_order.svg"
+          icon="/images/icons/icons8_purchase_order.svg"
           title="Total a justifier"
           value={stats?.total_to_justify}
         />

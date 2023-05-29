@@ -29,41 +29,60 @@ export default function UserEdit() {
     >
       <LoadingModal open={loading} />
       <form className="grid grid-cols-2 gap-4 mt-[4rem]" autoComplete="off">
-        <div className="">
+        <div className="input-container">
+          <label>Prenom</label>
           <input
             type="text"
             className="w-full h-10 border-2 border-gray-300 rounded-md px-2"
-            placeholder="First Name"
           />
         </div>
-        <div className="">
+        <div className="input-container">
+          <label>Nom</label>
           <input
             type="text"
             className="w-full h-10 border-2 border-gray-300 rounded-md px-2"
-            placeholder="First Name"
           />
         </div>
-        <div className="">
+        <div className="input-container">
+        <label>CIN</label>
           <input
             type="text"
             className="w-full h-10 border-2 border-gray-300 rounded-md px-2"
-            placeholder="First Name"
           />
         </div>
-        <div className="">
+        <div className="input-container">
+        <label>Matricule</label>
           <input
             type="text"
             className="w-full h-10 border-2 border-gray-300 rounded-md px-2"
-            placeholder="First Name"
           />
         </div>
-        {/* add button  */}
-        <div className="col-span-2">
+        <div className="input-container">
+        <label>Paiment par heurs</label>
+          <input
+            type="text"
+            className="w-full h-10 border-2 border-gray-300 rounded-md px-2"
+          />
+        </div>
+        <div className="input-container">
+        <label>Plage Horaire</label>
+          <div className="plage">
+            <input
+              type="time"
+              className="h-10 border-2 border-gray-300 rounded-md px-[30px]"
+            />
+            <input
+              type="time"
+              className="h-10 border-2 border-gray-300 rounded-md px-[30px]"
+            />
+          </div>
+        </div>
+
+        <div className="col-span-2 mt-10">
           <button
-            type="submit"
-            className="w-full h-10 bg-blue-500 text-white rounded-md"
+            className="w-full h-10 bg-[#478c0e] text-white rounded-md"
           >
-            Submit
+            Sauvgarder
           </button>
         </div>
       </form>

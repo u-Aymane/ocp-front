@@ -191,7 +191,7 @@ export default function JusitifcationsTable({ currentStats, isSuperAdmin, setDat
                 <TableCell>
                   <>
                   
-                  {!is_admin ? <><label htmlFor="upload"><img src={"images/upload.png"} width={25} className="upload"/></label>
+                  {!is_admin ? <><label htmlFor="upload"><img src={"/images/upload.png"} width={25} className="upload"/></label>
                   <input type="file" id="upload" onChange={(e) => {upload(e.target.files[0], moment({
                     day: row._id.day,
                     month: row._id.month - 1,
@@ -199,7 +199,7 @@ export default function JusitifcationsTable({ currentStats, isSuperAdmin, setDat
                   }).format('YYYY-MM-DD'))}} /></>
                   
                   :
-                  row?.justifications?.length > 0 ? <img className="upload" width={25} src={row?.justifications?.[row?.justifications?.length - 1]?.confirmed ? "images/disapprove.png" : "images/approve.png" }  onClick={() => changeJustifications(row?.justifications?.[row?.justifications?.length - 1])}/> : null}
+                  row?.justifications?.length > 0 ? <img className="upload" width={25} src={row?.justifications?.[row?.justifications?.length - 1]?.confirmed ? "/images/disapprove.png" : "/images/approve.png" }  onClick={() => changeJustifications(row?.justifications?.[row?.justifications?.length - 1])}/> : null}
 
                   </>
                 </TableCell>

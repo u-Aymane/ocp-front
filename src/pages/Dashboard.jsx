@@ -50,24 +50,24 @@ export default function Dashboard() {
         }}
       >
         <StatusCard
-          icon="images/icons/icons8_combo_chart.svg"
+          icon="/images/icons/icons8_combo_chart.svg"
           title="Presence"
           value={stats?.total_working ? stats?.total_working + " h": "0 h"}
         />
 
         <StatusCard
-          icon="images/icons/icons8_purchase_order.svg"
+          icon="/images/icons/icons8_purchase_order.svg"
           title="Absence"
           value={stats?.total_off_work ? Math.abs(stats?.total_off_work) + " h" : "0 h"}
         />
         <StatusCard
-          icon="images/icons/icons8_combo_chart.svg"
+          icon="/images/icons/icons8_combo_chart.svg"
           title="Overtime"
           value={stats?.total_over_work ? stats?.total_over_work + " h": "0 h"}
         />
 
         <StatusCard
-          icon="images/icons/icons8_purchase_order.svg"
+          icon="/images/icons/icons8_purchase_order.svg"
           title="Absences injustifiées"
           value={stats?.total_to_justify? stats?.total_to_justify : 0}
         />

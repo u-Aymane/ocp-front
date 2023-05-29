@@ -21,7 +21,7 @@ const links = [
     id: uuid(),
     path: "/",
     label: "Dashboard",
-    icon: "images/admin.svg",
+    icon: "/images/admin.svg",
     isActive(path) {
       return this.path === path;
     },
@@ -30,7 +30,7 @@ const links = [
     id: uuid(),
     path: "/justification",
     label: "Justification",
-    icon: "images/stats.svg",
+    icon: "/images/stats.svg",
     isActive(path) {
       return this.path === path;
     },
@@ -39,7 +39,7 @@ const links = [
     id: uuid(),
     path: "/users",
     label: "Utilisateurs",
-    icon: "images/users.png",
+    icon: "/images/users.png",
     isActive(path) {
       return this.path === path;
     },
@@ -48,7 +48,7 @@ const links = [
     id: uuid(),
     path: "/logout",
     label: "Se déconnecter",
-    icon: "images/logout.svg",
+    icon: "/images/logout.svg",
     isActive(path) {
       return this.path === path;
     },
@@ -100,7 +100,7 @@ export default function SideBar() {
        
         }}
       >
-        <img style={{ width: 60 }} src="images/logo.svg" alt="logo" />
+        <img style={{ width: 60 }} src="/images/logo.svg" alt="logo" />
       </Box>
       <List
         sx={{

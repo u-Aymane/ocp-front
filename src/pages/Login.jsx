@@ -28,7 +28,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-white">
-      <img className="absolute left-5 top-3" src="images/logo.svg" alt="" />
+      <img className="absolute left-5 top-3" src="/images/logo.svg" alt="" />
       <div className="w-full max-w-[501px]">
         <h1 className="text-center text-2xl font-bold mb-7">Pointage OCP</h1>
         <form className="px-8 pt-6 pb-8 mb-4">

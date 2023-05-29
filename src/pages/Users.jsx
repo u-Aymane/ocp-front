@@ -47,7 +47,7 @@ export default function Users() {
         }}
       >
         <StatusCard
-          icon="images/icons/icons8_combo_chart.svg"
+          icon="/images/icons/icons8_combo_chart.svg"
           title="Total Utilisateurs"
           value={stats.total}
         />

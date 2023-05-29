@@ -4,6 +4,21 @@
   font-weight: 700;
 }
 
+.input-container {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  width: 100%;
+}
+
+.plage {
+  display: flex;
+  /* gap: 18px; */
+  width: 100%;
+  justify-content: space-between;
+}
+
+
 @font-face {
   font-family: "SF Pro Display";
   src: url(font/SFPRODISPLAYREGULAR.OTF) format("opentype");

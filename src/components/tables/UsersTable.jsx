@@ -181,7 +181,7 @@ export default function UsersTable({ currentStats, isSuperAdmin, setData }) {
                   {moment.utc(row.created_on).format('DD-MM-YYYY')}
                 </TableCell>
                 <TableCell>
-                <img className="upload" width={15} src="images/edit.png"/> 
+                <img className="upload" width={15} src="/images/edit.png"/> 
                 </TableCell>
               </TableRow>
             ))}

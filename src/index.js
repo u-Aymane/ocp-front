@@ -26,7 +26,6 @@ root.render(
         <Route path="/" element={<App />}>
           <Route path="/users" element={<Users />} />
           <Route path="/users-edit/:id" element={<UserEdit />} />
-
           <Route path="/" element={<Dashboard />} />
           <Route path="/justification" element={<Justification />} />
           <Route
@@ -35,7 +34,7 @@ root.render(
               <h1
                 style={{
                   textAlign: "center",
-                  margin: "5rem auto",
+                  margin: "5rem auto",  
                 }}
               >
                 404 Page non trouvée!

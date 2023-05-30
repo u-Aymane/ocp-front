@@ -16,7 +16,10 @@ import { Height } from "@mui/icons-material";
 
 const drawerWidth = 240;
 
-const links = [
+
+export default function SideBar() {
+  
+const [links, setLinks] = React.useState([
   {
     id: uuid(),
     path: "/",
@@ -35,15 +38,7 @@ const links = [
       return this.path === path;
     },
   },
-  {
-    id: uuid(),
-    path: "/users",
-    label: "Utilisateurs",
-    icon: "/images/users.png",
-    isActive(path) {
-      return this.path === path;
-    },
-  },
+  
   {
     id: uuid(),
     path: "/logout",
@@ -54,17 +49,36 @@ const links = [
     },
   },
   
-];
-
-export default function SideBar() {
+]);
   const location = useLocation();
   const [ui, setUi] = useGlobalState("ui");
+  const [is_admin, setIsAdmin] = useGlobalState("is_admin")
   function closeMenu() {
     setUi((prev) => ({
       ...prev,
       isSidebarOpen: false,
     }));
   }
+
+  React.useEffect(() => {
+    console.log("side" , is_admin)
+    if (is_admin && links.length < 4){
+      links.splice(links.length - 1, 0, {
+        id: uuid(),
+        path: "/users",
+        label: "Utilisateurs",
+        icon: "/images/users.png",
+        isActive(path) {
+          return this.path === path;
+        },
+      })
+      setLinks([
+        ...links
+      ])
+    }
+  }, [is_admin, setIsAdmin])
+  
+
   const isScreenLg = useMediaQuery("(min-width: 1200px)");
 
   return (

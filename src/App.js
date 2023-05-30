@@ -3,15 +3,20 @@ import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import SideBar from "./components/SideBar";
 import { useEffect } from "react";
+import { useGlobalState } from ".";
 
 function App() {
   const navigate = useNavigate();
+  const [is_admin, setIsAdmin] = useGlobalState('is_admin')
 
-  // useEffect(() => {
-  //   if (!localStorage.getItem("token")) {
-  //       navigate("/login");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+        navigate("/login");
+    }
+    if(localStorage.getItem('is_admin') == 'true'){
+      setIsAdmin(true)
+    }
+  }, []);
   return (
     <>
       <Box

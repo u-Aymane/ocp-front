@@ -51,11 +51,10 @@ export default function JusitifcationsTable({ currentStats, isSuperAdmin, setDat
   }
 
   useEffect(() => {
-    console.log('is_admin', localStorage.getItem('is_admin'))
     getData()
     if(localStorage.getItem('is_admin') == 'true'){
-    }
       setIsAdmin(true)
+    }
   }, [])
 
   const changeJustifications = (last_justification) => {
@@ -192,7 +191,7 @@ export default function JusitifcationsTable({ currentStats, isSuperAdmin, setDat
                 <TableCell>
                   <>
                   
-                  {!is_admin ? <><label htmlFor={`upload-${index}`}><img src={"/images/upload.png"} width={25} className="upload"/></label>
+                  {localStorage.getItem('is_admin') === 'false' ? <><label htmlFor={`upload-${index}`}><img src={"/images/upload.png"} width={25} className="upload"/></label>
                   <input type="file" id={`upload-${index}`} onChange={(e) => {upload(e.target.files[0], moment({
                     day: row._id.day,
                     month: row._id.month - 1,

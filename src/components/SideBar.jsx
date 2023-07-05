@@ -62,7 +62,7 @@ const [links, setLinks] = React.useState([
 
   React.useEffect(() => {
     console.log("side" , is_admin)
-    if (is_admin && links.length < 4){
+    if (localStorage.getItem('is_admin') == 'true' && links.length < 4){
       links.splice(links.length - 1, 0, {
         id: uuid(),
         path: "/users",
@@ -76,7 +76,7 @@ const [links, setLinks] = React.useState([
         ...links
       ])
     }
-  }, [is_admin, setIsAdmin])
+  }, [])
   
 
   const isScreenLg = useMediaQuery("(min-width: 1200px)");

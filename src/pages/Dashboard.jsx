@@ -62,7 +62,7 @@ export default function Dashboard() {
         />
         <StatusCard
           icon="/images/icons/icons8_combo_chart.svg"
-          title="Overtime"
+          title="Heures supplémentaire"
           value={stats?.total_over_work ? stats?.total_over_work + " h": "0 h"}
         />
 

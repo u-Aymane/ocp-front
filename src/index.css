@@ -4,6 +4,14 @@
   font-weight: 700;
 }
 
+.plage {
+  display: flex;
+  gap: 18px;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .input-container {
   display: flex;
   gap: 5px;
@@ -11,13 +19,20 @@
   width: 100%;
 }
 
-.plage {
+
+.timeframe {
   display: flex;
-  /* gap: 18px; */
-  width: 100%;
   justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
 }
 
+.plage-container {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  flex-direction: column;
+}
 
 @font-face {
   font-family: "SF Pro Display";

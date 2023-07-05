@@ -68,7 +68,7 @@ const Login = () => {
               type="button"
               onClick={handleSubmit}
             >
-              Login
+              Se connecter
             </button>
           </div>
         </form>
